@@ -149,7 +149,7 @@ def create_wordclouds(data):
     plt.axis("off")
 
 
-# In[8]:
+# In[2]:
 
 
 # Have troble plotting the word cloud for the wepage, but it works locally, thus we upload an image of it 
@@ -168,7 +168,7 @@ def create_wordclouds(data):
 
 # ## Word clouds for 5 main characters based on wiki
 
-# In[9]:
+# In[ ]:
 
 
 list_top_5 = [row['File_Name'] for i,row in characters_df.iterrows() if 'Human' in characters_df['Species'][i] if len(re.findall(r'\d',characters_df['Appearance'][i])) >= 7]
@@ -177,7 +177,7 @@ list_top_5
 
 # As we can observe above the most popular characters. From the light side Leia, Luke, and Obi-wan. From the dark side Darth Sidious, and Anakin Skywalker.
 
-# In[10]:
+# In[ ]:
 
 
 corpus_root_top_5 = os.getcwd() + '/data/top_5/'
@@ -185,7 +185,7 @@ file_list_top_5 = pd.Series(list_top_5) + '.txt'
 corpus_top_5 = pcr(corpus_root_top_5, file_list_top_5)
 
 
-# In[11]:
+# In[1]:
 
 
 # Have troble plotting the word cloud for the wepage, but it works locally, thus we upload an image of it 
@@ -211,7 +211,7 @@ corpus_top_5 = pcr(corpus_root_top_5, file_list_top_5)
 # 
 # We'll use the Latent Dirichlet Allocation (LDA) model which is an unsuperviced machine learning model, thus no previous labelling has to be made, and we only have to provide our corpus.
 
-# In[12]:
+# In[ ]:
 
 
 freq = plt.hist(partition.values(), bins = len(set(partition.values())), rwidth = 0.5)
@@ -225,7 +225,7 @@ com_trilogy
 com_dict = dict(zip(list(com_trilogy['Community Size'].keys()), [[key for key, val in partition.items() if val == com] for com in com_trilogy['Community Size'].keys()]))
 
 
-# In[13]:
+# In[ ]:
 
 
 corpus_root_com = os.getcwd() + '/data/Communities/'
@@ -234,7 +234,7 @@ corpus_com = pcr(corpus_root_com, file_list_com)
 com_top = [corpus_com.words(c) for c in corpus_com.fileids()]
 
 
-# In[14]:
+# In[ ]:
 
 
 id2word = corpora.Dictionary(com_top)
@@ -256,7 +256,7 @@ model.show_topics(num_topics=3, num_words = 6)
 
 # We will save the characters and their corresponding wikipage inside a dictionary. To do this we will loop over all characters and extract the text from [WOOKIEEPEDIA](https://starwars.fandom.com/wiki/Main_Page).
 
-# In[15]:
+# In[3]:
 
 
 figure(figsize = (18,6))
@@ -285,7 +285,7 @@ plt.show()
 # 
 # The VADER method categorized some characters not as neutral, we will take a closer look at these characters. 
 
-# In[16]:
+# In[ ]:
 
 
 # Sort the dictionary based on VADER score 
